@@ -168,3 +168,33 @@ class Turnos(models.Model):
     class Meta:
         verbose_name = "Turno"
         verbose_name_plural = "Turnos"
+
+# Classe Ocorrencia
+class Ocorrencia(models.Model):
+    descricao = models.CharField(max_length=255, verbose_name="Descrição da ocorrência")
+    data_ocorrencia = models.DateField(verbose_name="Data da ocorrência")
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, verbose_name="Pessoa envolvida")
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name="Curso associado", null=True, blank=True)
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE, verbose_name="Disciplina associada", null=True, blank=True)
+    
+    def __str__(self):
+        return f"Ocorrência de {self.pessoa.nome} - {self.descricao}"
+    
+    class Meta:
+        verbose_name = "Ocorrência"
+        verbose_name_plural = "Ocorrências"
+
+
+# Classe CursoDisciplina
+class CursoDisciplina(models.Model):
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name="Curso")
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE, verbose_name="Disciplina")
+    carga_horaria = models.IntegerField(verbose_name="Carga horária da disciplina no curso")
+    
+    def __str__(self):
+        return f"{self.curso.nome} - {self.disciplina.nome}"
+    
+    class Meta:
+        verbose_name = "Curso e Disciplina"
+        verbose_name_plural = "Cursos e Disciplinas"
+
