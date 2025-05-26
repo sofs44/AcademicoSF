@@ -24,7 +24,7 @@
                 <li class="nav-item"><a class="nav-link text-dark" href="disciplinas.html">Disciplinas</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="frequencias.html">Frequências</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="cursos.html">Cursos</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="ocorrencias.html">Ocorreências</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="ocorrencias.html">Ocorrências</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="turnos.html">Turnos</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="matricula.html">Matrícula</a></li>
             </ul>
@@ -36,13 +36,21 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Data da Ocorrência</th>
+                    <th scope="col">Pessoa</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Disciplina</th>
                 </tr>
             </thead>
             <tbody>
                 {% for ocorrencia in ocorrencias %}
                     <tr>
-                        <td>{{ ocorrencia.nome }}</td>
+                        <td>{{ ocorrencia.descricao }}</td>
+                        <td>{{ ocorrencia.data_ocorrencia }}</td>
+                        <td>{{ ocorrencia.pessoa }}</td>
+                        <td>{{ ocorrencia.curso }}</td>
+                        <td>{{ ocorrencia.disciplina }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

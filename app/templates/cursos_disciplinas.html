@@ -38,13 +38,18 @@
                 <tr>
                     <th scope="col">Curso</th>
                     <th scope="col">Disciplina</th>
+                    <th scope="col">Carga Horária</th>
+                    <th scope="col">Período</th>
                 </tr>
             </thead>
             <tbody>
                 {% for curso_disciplina in cursos_disciplinas %}
                     <tr>
-                        <td>{{ curso_disciplina.curso }}</td>
-                        <td>{{ curso_disciplina.disciplina }}</td>
+                        <td>{{ curso_disciplina.curso.nome }}</td>
+                        <td>{{ curso_disciplina.disciplina.nome }}</td>
+                        <td>{{ curso_disciplina.carga_horaria }}</td>
+                        <td>{{ curso_disciplina.periodo }}</td>
+
                     </tr>
                 {% endfor %}
             </tbody>

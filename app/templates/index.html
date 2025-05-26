@@ -63,6 +63,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="tipo_de_avaliaçao.html">Tipos de Avaliação</a>
                 </li>
+
             </ul>
         </div>
     </nav>
@@ -72,6 +73,39 @@
             <p class="lead">Esta é a página inicial do sistema acadêmico</p>
             <p class="lead">Seja Bem Vindo(A)</p>
         </div>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Pai</th>
+                    <th scope="col">Mãe</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Data de nascimento</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Ocupação</th>
+                    <th scope="col">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{ pessoa.nome }}</td>
+                    <td>{{ pessoa.pai }}</td>
+                    <td>{{ pessoa.mae }}</td>
+                    <td>{{ pessoa.cpf }}</td>
+                    <td>{{ pessoa.data_nasc }}</td>
+                    <td>{{ pessoa.email }}</td>
+                    <td>{{ pessoa.cidade.nome }}</td>
+                    <td>{{ pessoa.ocupacao.nome }}</td>
+
+                    <td><a href="delete/{{ pessoas.id }}" class="btn btn-danger">Excluir</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
     </div>
 
     <!-- Incluindo jQuery e Bootstrap JS -->

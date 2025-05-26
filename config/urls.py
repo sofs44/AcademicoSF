@@ -4,7 +4,9 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='index'),
+    path('index.html', IndexView.as_view(), name='index'),
+
+    path('delete/<int:id>/', DeletePessoaView.as_view(),name='delete_pessoa'),
     
     # Gerenciar pessoas
     path('pessoa.html', PessoasView.as_view(), name='pessoa'),
@@ -46,7 +48,7 @@ urlpatterns = [
     path('ocorrencias.html', OcorrenciasView.as_view(), name='ocorrencia'),
     
     # Gerenciar disciplinas por cursos
-    path('cursos_disciplinas.html', CursoDisciplinasView.as_view(), name='curso_disciplina'),
+    path('cursos_disciplinas.html', CursoDisciplinasView.as_view(), name='curso_disciplinas'),
     
     # Gerenciar tipos de avaliação
     path('tipo_de_avaliaçao.html', AvaliacaoTiposView.as_view(), name='avaliacao_tipo'),

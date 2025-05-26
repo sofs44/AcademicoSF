@@ -190,9 +190,11 @@ class CursoDisciplina(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, verbose_name="Curso")
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE, verbose_name="Disciplina")
     carga_horaria = models.IntegerField(verbose_name="Carga horária da disciplina no curso")
-    
+    periodo = models.CharField(max_length=20, verbose_name="Período")
+
     def __str__(self):
-        return f"{self.curso.nome} - {self.disciplina.nome}"
+        return f"{self.curso.nome} - {self.disciplina.nome} ({self.periodo})"
+
     
     class Meta:
         verbose_name = "Curso e Disciplina"

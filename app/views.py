@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.views import View
+from django.contrib import messages
+
 
 # Página inicial
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        pessoas = Pessoa.objects.all()
+        return render(request, 'index.html', {'pessoas': pessoas})
 
 # Gerenciar pessoas
 class PessoasView(View):
@@ -89,10 +92,17 @@ class OcorrenciasView(View):
 class CursoDisciplinasView(View):
     def get(self, request, *args, **kwargs):
         curso_disciplinas = CursoDisciplina.objects.all()
-        return render(request, 'cursos_disciplinas.html', {'curso_disciplinas': curso_disciplinas})
+        return render(request, 'cursos_disciplinas.html', {'cursos_disciplinas': curso_disciplinas})
 
 # Gerenciar tipos de avaliação
 class AvaliacaoTiposView(View):
     def get(self, request, *args, **kwargs):
         avaliacao_tipos = AvaliacaoTipo.objects.all()
         return render(request, 'tipo_de_avaliaçao.html', {'avaliacao_tipos': avaliacao_tipos})
+
+class DeletePessoaView(View):
+    def get(self, request, id, *args, **kwargs):
+        pessoa = Pessoa.objects.get(id=id)
+        pessoa.delete()
+        messages.success(request, 'Pessoa excluída com sucesso!') # Success message
+        return redirect('pessoa')

@@ -37,12 +37,14 @@
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
+                    <th scope="col">UF</th>
                 </tr>
             </thead>
             <tbody>
                 {% for cidade in cidades %}
                     <tr>
                         <td>{{ cidade.nome }}</td>
+                        <td>{{ cidade.uf }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
