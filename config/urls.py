@@ -4,7 +4,7 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index.html', IndexView.as_view(), name='index'),
+    path('', IndexView.as_view(), name='index'),
 
     path('delete/<int:id>/', DeletePessoaView.as_view(),name='delete_pessoa'),
     
