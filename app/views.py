@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.views import View
 from django.contrib import messages
+from .models import Pessoa
 
 
 # Página inicial
@@ -102,7 +103,7 @@ class AvaliacaoTiposView(View):
 
 class DeletePessoaView(View):
     def get(self, request, id, *args, **kwargs):
-        pessoa = Pessoa.objects.get(id=id)
+        pessoa = get_object_or_404(Pessoa, id=id)
         pessoa.delete()
-        messages.success(request, 'Pessoa excluída com sucesso!') # Success message
-        return redirect('pessoa')
+        messages.success(request, 'Pessoa excluída com sucesso!')
+        return redirect('index')  # Redireciona para a página inicia

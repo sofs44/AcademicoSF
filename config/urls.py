@@ -6,7 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
 
-    path('delete/<int:id>/', DeletePessoaView.as_view(),name='delete_pessoa'),
+    path('delete/<int:id>/', DeletePessoaView.as_view(), name='delete_pessoa'),
     
     # Gerenciar pessoas
     path('pessoa.html', PessoasView.as_view(), name='pessoa'),
